@@ -60,7 +60,7 @@ function E=pcreff(ng,cp,varargin)
 
 %Input errors handling
 p = inputParser;
-addRequired(p,'ng',@(x) validateattributes(x,{'numeric'},{'row','real','finite','nonnan','nonempty','nondecreasing'}));
+addRequired(p,'ng',@(x) validateattributes(x,{'numeric'},{'row','real','finite','nonnan','nonempty'}));
 addRequired(p,'cp',@(x) validateattributes(x,{'numeric'},{'2d','real','finite','nonnan','nonempty'}));
 addOptional(p,'verbose',1, @(x) isnumeric(x) && isreal(x) && isfinite(x) && isscalar(x) && (x==0 || x==1));
 parse(p,ng,cp,varargin{:});
