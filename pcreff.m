@@ -67,14 +67,7 @@ parse(p,ng,cp,varargin{:});
 verbose=p.Results.verbose;
 clear p
 
-if exist('myregr.m','file')==0
-    filename=unzip('https://it.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/15473/versions/10/download/zip','prova');
-    Index = contains(filename,'myregr.m');
-    current=cd;
-    copyfile(filename{Index},current)
-    rmdir('prova','s')
-    clear filename Index current 
-end
+assert(exist('myregr.m','file')~=0,'You must download myregr function from https://it.mathworks.com/matlabcentral/fileexchange/15473-myregression')
 
 [slope,~,stat]=myregr(log10(ng),cp,verbose);
 A.value=10^(-1/slope.value); %PCR efficiency (1<=A<=2)
